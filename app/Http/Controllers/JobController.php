@@ -15,7 +15,10 @@ class JobController extends Controller {
      * Display a listing of the resource.
      */
     public function index() {
-        $jobs = Job::latest()->get()->groupBy('featured');
+        $jobs = Job::query()
+            ->latest()
+            ->with(['employer', 'tags'])
+            ->get()->groupBy('featured');
 
         return view('jobs.index', [
             'jobs'         => $jobs[0],
