@@ -1,206 +1,137 @@
-# Pixel Positions
- 
-A Laravel web application to manage pixel positions and related operations. This project was created following a Laracasts tutorial and demonstrates routing, controllers, models, migrations, and Blade views in Laravel.
-    
---- 
+# 🎨 Pixel Positions
 
-## Table of Contents
-
--   [Project Structure](#project-structure)
--   [Features](#features)
--   [Installation](#installation)
--   [How to Use](#how-to-use)
--   [Available Routes](#available-routes)
--   [Requirements](#requirements)
--   [Contribution](#contribution)
--   [Learn More](#learn-more)
+Pixel Positions is a **Laravel-based web application** designed to manage pixel positions and demonstrate modern web development best practices.  
+Originally inspired by a Laracasts tutorial, this project highlights **clean architecture, authentication, migrations, Blade views, and asset management with Vite**.
 
 ---
 
-## Project Structure
+## 🚀 Features
+
+- Full **CRUD** management of pixel positions  
+- **Authentication flow** (Register, Login, Logout)  
+- Organized **MVC structure** (Controllers, Models, Policies)  
+- **Database migrations, factories, and seeders**  
+- **Blade templating** with modern asset bundling via Vite  
+- Clean and modular project structure  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend:** PHP 8.x, Laravel 12.x  
+- **Frontend:** Blade, TailwindCSS, JavaScript, Vite  
+- **Database:** MySQL / PostgreSQL / SQLite  
+- **Tooling:** Composer, npm  
+
+---
+
+## 📂 Project Structure
 
 ```
 pixel-positions/
-├── app/                     # Controllers, models, policies, providers
-│   ├── Http/
-│   ├── Models/
-│   ├── Policies/
-│   └── Providers/
-├── bootstrap/               # Framework bootstrap files
-├── config/                  # Configuration files
-├── database/                # Migrations, factories, seeders
-│   ├── migrations/
-│   ├── factories/
-│   └── seeders/
-├── public/                  # Public assets (JS, CSS, images)
-├── resources/               # Blade views, CSS/JS assets
-│   ├── views/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── routes/                  # Web and API routes
-│   └── web.php
-├── storage/                 # Generated files and logs
-├── tests/                   # Automated tests
-├── artisan                  # Laravel CLI tool
-├── composer.json            # PHP dependencies
-├── package.json             # JS dependencies
-└── vite.config.js           # Frontend build config with Vite
+├── app/            # Controllers, models, policies, providers
+├── bootstrap/      # Framework bootstrap files
+├── config/         # Configuration files
+├── database/       # Migrations, factories, seeders
+├── public/         # Public assets (JS, CSS, images)
+├── resources/      # Blade views, CSS/JS assets
+├── routes/         # Web and API routes
+├── storage/        # Generated files and logs
+├── tests/          # Automated tests
+└── ...             # Other Laravel default files
 ```
 
 ---
 
-## Features
+## ⚡ Installation & Setup
 
--   CRUD management of pixel positions
--   Controller and route handling
--   Database migrations
--   Blade templating and asset management with Vite
--   Basic authentication flow (registration, login, logout)
+1. **Clone the repository:**  
+   ```bash
+   git clone https://github.com/LeonardoReichardt/project-pixel-positions.git
+   cd pixel-positions
+   ```
 
----
+2. **Install PHP dependencies:**  
+   ```bash
+   composer install
+   ```
 
-## Installation
+3. **Install frontend dependencies:**  
+   ```bash
+   npm install
+   ```
 
-1. **Clone the repository:**
+4. **Copy and configure environment file:**  
+   ```bash
+   cp .env.example .env
+   ```
+   Update `.env` with your database and app settings.
 
-```bash
-git clone https://github.com/LeonardoReichardt/project-pixel-positions.git
-cd pixel-positions
-```
+5. **Generate application key:**  
+   ```bash
+   php artisan key:generate
+   ```
 
-2. **Install PHP dependencies:**
+6. **Run migrations (and seed if needed):**  
+   ```bash
+   php artisan migrate --seed
+   ```
 
-```bash
-composer install
-```
+7. **Build frontend assets:**  
+   ```bash
+   npm run dev   # for development
+   npm run build # for production
+   ```
 
-3. **Install frontend dependencies:**
+8. **Start the development server:**  
+   ```bash
+   php artisan serve
+   ```
 
-```bash
-npm install
-```
-
-4. **Copy and configure environment file:**
-
-```bash
-cp .env.example .env
-```
-
-Update `.env` with your database and app settings.
-
-5. **Generate application key:**
-
-```bash
-php artisan key:generate
-```
-
-6. **Run database migrations:**
-
-```bash
-php artisan migrate
-```
-
-7. **(Optional) Seed database with sample data:**
-
-```bash
-php artisan db:seed
-```
-
-8. **Build frontend assets:**
-
-```bash
-npm run build
-```
-
-or for development:
-
-```bash
-npm run dev
-```
-
-9. **Start development server:**
-
-```bash
-php artisan serve
-```
+Now visit [http://localhost:8000](http://localhost:8000). 🎉
 
 ---
 
-## How to Use
+## 🌐 Available Routes
 
-Open your browser and visit:
+**Public Routes:**  
+- `/` — Home (list all jobs/pixels)  
+- `/search` — Search for jobs/pixels  
+- `/tags/{tag:name}` — Filter by tag  
 
-```
-http://localhost:8000
-```
+**Authentication:**  
+- `/register` — Register  
+- `/login` — Login  
+- `/logout` — Logout (requires auth)  
 
-From there, you can interact with the app, manage pixel positions, and use authentication features.
-
----
-
-## Available Routes
-
--   **Home:** `/` — List all jobs (pixel positions)
--   **Create Job:** `/jobs/create` (requires auth)
--   **Store Job:** `/jobs` (POST, requires auth)
--   **Search:** `/search`
--   **Tag Filter:** `/tags/{tag:name}`
-
-**Authentication (Guest only):**
-
--   **Register:** `/register` (GET, POST)
--   **Login:** `/login` (GET, POST)
-
-**Logout (Authenticated):**
-
--   **Logout:** `/logout` (DELETE)
+**Protected Routes:**  
+- `/jobs/create` — Create new job/pixel  
+- `/jobs` (POST) — Store new job/pixel  
 
 ---
 
-## Requirements
+## 🤝 Contribution
 
--   PHP 8.x
--   Laravel 12.x
--   Composer
--   Node.js and npm
--   Compatible relational database (MySQL, PostgreSQL, etc.)
+Contributions are welcome!  
 
----
-
-## Contribution
-
-1. Fork the repository
-2. Create a feature branch:
-
-```bash
-git checkout -b feature/my-feature
-```
-
-3. Commit your changes:
-
-```bash
-git commit -am "Add new feature"
-```
-
-4. Push to your branch:
-
-```bash
-git push origin feature/my-feature
-```
-
-5. Open a Pull Request for review
+1. Fork the project  
+2. Create a feature branch  
+3. Commit and push your changes  
+4. Open a Pull Request 🚀  
 
 ---
 
-## Learn More
+## 📖 Learn More
 
--   [Laravel Documentation](https://laravel.com/docs)
--   [Laracast](https://laracasts.com/)
--   [Laravel Migrations](https://laravel.com/docs/migrations)
--   [Laravel Authentication](https://laravel.com/docs/authentication)
--   [Vite in Laravel](https://laravel.com/docs/vite)
+- [Laravel Documentation](https://laravel.com/docs)  
+- [Laracasts](https://laracasts.com/)  
+- [Vite in Laravel](https://laravel.com/docs/vite)  
 
 ---
 
-Thank you for using Pixel Positions! Contributions and feedback are welcome.
+### ✨ About
+
+This project was built for **learning and demonstration purposes**.  
+Feedback and contributions are highly appreciated!  
+
+---
